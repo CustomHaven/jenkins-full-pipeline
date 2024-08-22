@@ -1,24 +1,24 @@
 pipeline {
-    // agent any
-    agent {
-        docker {
-            image "node:18"
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
+    // agent {
+        // docker {
+            // image "node:18"
+            // args '-v /var/run/docker.sock:/var/run/docker.sock'
+        // }
+    // }
     // environment {
 
     // }
     stages {
         stage("Checkout") {
             steps {
+                echo "Docker Home"
+                sh "docker --version"
                 echo "We have node"
                 sh "node --version"
                 echo "We have npm"
                 sh "npm --version"
-                echo "Docker Home"
-                sh "docker --version"
-                echo "Path: $Path"
+                // echo "Path: $Path"
 				echo "Build Number: $env.BUILD_NUMBER"
 				echo "Build ID: $env.BUILD_ID"
 				echo "Build URL: $env.BUILD_URL"
