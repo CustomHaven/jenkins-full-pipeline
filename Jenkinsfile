@@ -1,10 +1,9 @@
 pipeline {
-    agent any
-    // agent {
-        // docker {
-            // image "node:18"
-        // }
-    // }
+    agent {
+        docker {
+            image "node:18"
+        }
+    }
     environment {
         dockerHome = tool "myDocker"
         mavenHome = tool "myMaven"
@@ -36,21 +35,29 @@ pipeline {
 				}
 			}
         }
-		stage('Compile') {
+        stage("Build Docker Image") {
+            steps {
+                script {
+                    dockerImage = docker.build("customhaven/blog_mvc:${env.BUILD_TAG}")
+                }
+            }
+        }
+        stage('Push Docker Image') {
 			steps {
-				sh "mvn clean compile"
+				script {
+					docker.withRegistry('', 'dockerhub') {
+						dockerImage.push()
+						dockerImage.push("${env.build_TAG}")
+					}
+				}
 			}
 		}
-		stage('Test') {
-			steps {
-				sh "mvn test"
-			}
-		}
-		stage('Package') {
-			steps {
-				sh 'mvn package -DskipTest'
-			}
-		} 
+		// stage('Test') {
+		// 	steps {
+        //         sh "cd pokemon-mvc"
+		// 		sh "npm test"
+		// 	}
+		// }
     }
     post {
 		always {
