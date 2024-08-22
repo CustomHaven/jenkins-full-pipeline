@@ -39,7 +39,7 @@ pipeline {
                 script {
                     echo "location before"
                     sh "pwd"
-                    sh "cd pokemon-mvc"
+                    sh "cd ./pokemon-mvc"
                     echo "current location"
                     sh "pwd"
                     dockerImage = docker.build("customhaven/blog_mvc:${env.BUILD_TAG}")
