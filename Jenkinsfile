@@ -17,6 +17,9 @@ pipeline {
                 sh "npm --version"
                 echo "Docker Home is set to: ${dockerHome}"
                 echo "Maven is set to: ${mavenHome}"
+                echo "Maven is set to: ${mavenHome}"
+                echo "Maven is set to: ${mavenHome}"
+                echo "Maven is set to: ${mavenHome}"
             }
             post {
 				always {
