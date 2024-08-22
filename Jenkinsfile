@@ -1,9 +1,9 @@
 pipeline {
     // agent any
-    // agent {
+    agent {
         docker {
             image "node:18"
-            // args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     // environment {
