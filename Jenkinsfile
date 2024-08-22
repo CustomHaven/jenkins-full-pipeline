@@ -43,8 +43,8 @@ pipeline {
                     cd ./pokemon-mvc
                     echo "current location"
                     pwd
-                    dockerImage = docker.build("customhaven/pokemon_mvc:${env.BUILD_TAG}")
                     """
+                    dockerImage = docker.build("customhaven/pokemon_mvc:${env.BUILD_TAG}")
                 }
             }
         }
