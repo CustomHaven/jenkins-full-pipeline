@@ -6,9 +6,11 @@ pipeline {
             // args '-v /var/run/docker.sock:/var/run/docker.sock'
         // }
     // }
-    // environment {
-
-    // }
+    environment {
+        dockerHome = tool "myDocker"
+		nodeHome = tool "myNodeJS"
+		PATH = "$dockerHome/bin:$nodeHome/bin:$PATH"
+    }
     stages {
         stage("Checkout") {
             steps {
@@ -17,7 +19,7 @@ pipeline {
                 echo "We have node"
                 sh "node --version"
                 echo "We have npm"
-                sh "npm --version"
+                // sh "npm --version"
                 // echo "Path: $Path"
 				echo "Build Number: $env.BUILD_NUMBER"
 				echo "Build ID: $env.BUILD_ID"
