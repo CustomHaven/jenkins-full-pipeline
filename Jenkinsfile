@@ -2,12 +2,12 @@ pipeline {
     agent {
         docker {
             image "node:18"
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     environment {
         dockerHome = tool "myDocker"
-        mavenHome = tool "myMaven"
-        PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+        PATH = "$dockerHome/bin:$PATH"
     }
     stages {
         stage("Checkout") {
@@ -49,12 +49,6 @@ pipeline {
 				}
 			}
 		}
-		// stage('Test') {
-		// 	steps {
-        //         sh "cd pokemon-mvc"
-		// 		sh "npm test"
-		// 	}
-		// }
     }
     post {
 		always {
