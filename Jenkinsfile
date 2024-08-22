@@ -12,7 +12,7 @@ pipeline {
                 sh "node --version"
                 echo "We have npm"
                 sh "npm --version"
-                echo "Docker Home is set to: ${dockerHome}"
+                echo "Docker Home"
                 sh "docker --version"
                 echo "Path: $Path"
 				echo "Build Number: $env.BUILD_NUMBER"
