@@ -1,11 +1,12 @@
 pipeline {
-    agent{
+    agent {
         docker {
             image "node:18"
         }
     }
     environment {
         dockerHome = tool "myDocker"
+        echo "$dockerHome"
     }
     stages {
         stage("Checkout") {
