@@ -37,6 +37,7 @@ pipeline {
         stage("Build Docker Image") {
             steps {
                 script {
+                    sh "cd pokemon-mvc"
                     dockerImage = docker.build("customhaven/blog_mvc:${env.BUILD_TAG}")
                 }
             }
