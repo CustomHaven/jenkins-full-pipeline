@@ -49,7 +49,7 @@ pipeline {
 			steps {
 				sh 'mvn package -DskipTest'
 			}
-		}
+		} 
     }
     post {
 		always {
