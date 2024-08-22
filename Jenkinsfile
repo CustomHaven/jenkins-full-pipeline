@@ -41,7 +41,7 @@ pipeline {
                     sh "pwd"
                     sh "cd pokemon-mvc"
                     echo "current location"
-                    echo "pwd"
+                    sh "pwd"
                     dockerImage = docker.build("customhaven/blog_mvc:${env.BUILD_TAG}")
                 }
             }
