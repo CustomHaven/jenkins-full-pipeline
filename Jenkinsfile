@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                echo "Docker Home"
-                sh "docker --version"
                 echo "We have node"
                 sh "node --version"
                 echo "We have npm"
                 sh "npm --version"
+                echo "Docker Home"
+                sh "docker --version"
                 echo "Path: $Path"
 				echo "Build Number: $env.BUILD_NUMBER"
 				echo "Build ID: $env.BUILD_ID"
