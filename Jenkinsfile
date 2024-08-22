@@ -1,23 +1,45 @@
 pipeline {
-    agent {
-        docker {
-            image "node:16"
+    stages {
+        agent {
+            docker {
+                image "node:18"
+            }
+        }
+        stage("Checkout App") {
+            steps {
+                echo "Node version is:"
+                sh "node --version"
+                echo "npm version is:"
+                sh "npm --version"
+            }
+        }
+        stage("App Test") {
+            steps {
+                echo "npm test"
+            }
+        }
+    stages {
+        agent {
+            docker {
+                image "docker:20.10"
+            }
+        }
+        stage("Checkout Docker") {
+            steps {
+                echo "Docker version check"
+                sh "docker --version"
+                echo "Docker compose check"
+                sh "docker-compose --version"
+            }
         }
     }
-	environment {
-		dockerHome = tool "myDocker"
-		mavenHome = tool "myMaven"
-		PATH = "$dockerHome/bin:$PATH"
-	}
-    stages {
-        stage("Checkout") {
+	// environment {
+	// 	dockerHome = tool "myDocker"
+	// 	mavenHome = tool "myMaven"
+	// 	PATH = "$dockerHome/bin:$PATH"
+	// }
+        stage("Checkout ENV vars") {
             steps {
-                echo "We have node"
-                sh "node --version"
-                echo "We have npm"
-                sh "npm --version"
-                echo "Docker Home"
-                sh "docker --version"
                 echo "Path: $Path"
 				echo "Build Number: $env.BUILD_NUMBER"
 				echo "Build ID: $env.BUILD_ID"
