@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         dockerHome = tool "myDocker"
+        mavenHome = tool "myMaven"
     }
     stages {
         stage("Checkout") {
@@ -14,7 +15,8 @@ pipeline {
                 sh "node --version"
                 echo "We have npm"
                 sh "npm --version"
-                echo "Docker Home is set to: ${dockerHome}"  // Use the variable within steps
+                echo "Docker Home is set to: ${dockerHome}"
+                echo "Maven is set to: ${mavenHome}"
             }
             post {
 				always {
