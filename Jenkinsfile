@@ -5,10 +5,6 @@ pipeline {
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
-    environment {
-        dockerHome = tool "myDocker"
-        PATH = "$dockerHome/bin:$PATH"
-    }
     stages {
         stage("Checkout") {
             steps {
