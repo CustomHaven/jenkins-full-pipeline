@@ -1,10 +1,14 @@
 pipeline {
-    agent {
-        docker {
-            image "docker:20.10"
-            image "node:18"
-        }
-    }
+    agent any
+    // agent {
+    //     docker {
+    //         image "docker:20.10"
+    //         image "node:18"
+    //     }
+    // }
+    // environment {
+
+    // }
     stages {
         stage("Checkout") {
             steps {
