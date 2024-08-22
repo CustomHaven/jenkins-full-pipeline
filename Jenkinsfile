@@ -7,7 +7,7 @@ pipeline {
 	environment {
 		dockerHome = tool "myDocker"
 		mavenHome = tool "myMaven"
-		PATH = "$dockerHome/bin:"
+		PATH = "/var/run/docker.sock"
 	}
     stages {
         stage("Checkout") {
