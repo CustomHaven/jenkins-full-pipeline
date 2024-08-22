@@ -6,7 +6,6 @@ pipeline {
     }
     environment {
         dockerHome = tool "myDocker"
-        echo "$dockerHome"
     }
     stages {
         stage("Checkout") {
@@ -15,7 +14,7 @@ pipeline {
                 sh "node --version"
                 echo "We have npm"
                 sh "npm --version"
-
+                echo "Docker Home is set to: ${dockerHome}"  // Use the variable within steps
             }
             post {
 				always {
