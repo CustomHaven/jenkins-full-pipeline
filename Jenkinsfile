@@ -1,9 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image "node:18"
-        }
-    }
+    agent any
+    // agent {
+        // docker {
+            // image "node:18"
+        // }
+    // }
     environment {
         dockerHome = tool "myDocker"
         mavenHome = tool "myMaven"
