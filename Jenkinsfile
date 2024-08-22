@@ -7,6 +7,7 @@ pipeline {
     environment {
         dockerHome = tool "myDocker"
         mavenHome = tool "myMaven"
+        PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
     }
     stages {
         stage("Checkout") {
@@ -20,6 +21,13 @@ pipeline {
                 echo "Maven is set to: ${mavenHome}"
                 echo "Maven is set to: ${mavenHome}"
                 echo "Maven is set to: ${mavenHome}"
+                echo "Path: $Path"
+				echo "Build Number: $env.BUILD_NUMBER"
+				echo "Build ID: $env.BUILD_ID"
+				echo "Build URL: $env.BUILD_URL"
+				echo "Build Tag: $env.BUILD_TAG"
+				echo "Job Name: $env.JOB_NAME"
+                echo "FINSIHED THESE STEPS"
             }
             post {
 				always {
