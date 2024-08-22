@@ -36,16 +36,12 @@ pipeline {
         }
         stage("Build Docker Image") {
             steps {
-                script {
-                    sh """
-                    echo "location before"
-                    pwd
-                    cd ./pokemon-mvc
-                    echo "current location"
-                    pwd
-                    ${docker.build("customhaven/pokemon_mvc:${env.BUILD_TAG}")}
-                    """
-                    
+                dir("pokemon-mvc") {
+                    echo "current directory has to be pokemon"
+                    sh "pwd"
+                    script {
+                        dockerImage = docker.build("customhaven/pokemon_mvc:${env.BUILD_TAG}")
+                    }
                 }
             }
         }
