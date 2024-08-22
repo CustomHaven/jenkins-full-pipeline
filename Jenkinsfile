@@ -32,12 +32,6 @@ pipeline {
                 sh "docker-compose --version"
             }
         }
-    }
-	// environment {
-	// 	dockerHome = tool "myDocker"
-	// 	mavenHome = tool "myMaven"
-	// 	PATH = "$dockerHome/bin:$PATH"
-	// }
         stage("Checkout ENV vars") {
             steps {
                 echo "Path: $Path"
@@ -71,6 +65,7 @@ pipeline {
 				}
 			}
 		}
+    }
     }
     post {
 		always {
