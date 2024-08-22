@@ -37,12 +37,14 @@ pipeline {
         stage("Build Docker Image") {
             steps {
                 script {
+                    sh """
                     echo "location before"
-                    sh "pwd"
-                    sh "cd ./pokemon-mvc"
+                    pwd
+                    cd ./pokemon-mvc
                     echo "current location"
-                    sh "pwd"
-                    dockerImage = docker.build("customhaven/blog_mvc:${env.BUILD_TAG}")
+                    pwd
+                    dockerImage = docker.build("customhaven/pokemon_mvc:${env.BUILD_TAG}")
+                    """
                 }
             }
         }
