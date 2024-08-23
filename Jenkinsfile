@@ -50,7 +50,7 @@ pipeline {
 				script {
 					docker.withRegistry('', 'dockerhub') {
 						dockerImage.push()
-						dockerImage.push("${env.build_TAG}")
+						dockerImage.push("${env.BUILD_TAG}")
 					}
 				}
 			}
